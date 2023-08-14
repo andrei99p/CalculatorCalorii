@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CalculatorCalorii.Pages.Adaugare"
+             Title="Adaugare">
+    <VerticalStackLayout>
+
+        <Editor 
+            x:Name="txtNume"
+            BackgroundColor="LightGray" 
+            HeightRequest="5" 
+            VerticalOptions="Start" 
+            Placeholder="Nume" 
+            PlaceholderColor="Black" 
+            TextColor="Black"/>
+
+        <Editor 
+            x:Name="txtCalorii"
+            BackgroundColor="LightGray" 
+            HeightRequest="5" VerticalOptions="Start" 
+            Placeholder="Calorii" PlaceholderColor="Black" 
+            TextColor="Black"/>
+
+        <Button
+            x:Name="Adauga"
+            Clicked="Adauga_Clicked"
+            Text="Adauga"
+            VerticalOptions="End"
+            TextColor="Black"/>
+
+    </VerticalStackLayout>
+
+</ContentPage>

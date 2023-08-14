@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CalculatorCalorii.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="10"
+            Padding="30,0"
+            VerticalOptions="Start">
+
+            <SearchBar x:Name="searchBar" Placeholder="Search for items" TextChanged="searchBar_TextChanged" VerticalOptions="Start"></SearchBar>
+            <ListView x:Name="listAlimente" BackgroundColor="LightGray" VerticalOptions="Start">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="10">
+                                <Label Text="{Binding Name}" TextColor="Black" FontSize="16" />
+                                <Label Text="{Binding Calorii, StringFormat=' - kcal: {0}'}" TextColor="Black" FontSize="14" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button x:Name="btnAdaugare" Clicked="btnAdaugare_Clicked" Text="Adaugare" VerticalOptions="End"/>
+            <Button x:Name="btnModificare" Clicked="btnModificare_Clicked" Text="Modificare" VerticalOptions="End"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CalculatorCalorii.Pages.Modificare"
+             Title="Modificare">
+    <ScrollView>
+        <VerticalStackLayout
+         Spacing="10"
+         Padding="30,0"
+         VerticalOptions="Start">
+
+            <ListView x:Name="listAlimente" BackgroundColor="LightGray" VerticalOptions="Start" HeightRequest="250" ItemSelected="listAlimente_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="10">
+                                <Label Text="{Binding Name}" TextColor="Black" FontSize="16" />
+                                <Label Text="{Binding Calorii, StringFormat=' - kcal: {0}'}" TextColor="Black" FontSize="14" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Editor 
+                x:Name="txtNume"
+                BackgroundColor="LightGray" 
+                HeightRequest="5" 
+                VerticalOptions="Start" 
+                Placeholder="Nume" 
+                PlaceholderColor="Black" 
+                TextColor="Black"/>
+
+            <Editor 
+                x:Name="txtCalorii"
+                BackgroundColor="LightGray" 
+                HeightRequest="5" VerticalOptions="Start" 
+                Placeholder="Calorii" PlaceholderColor="Black" 
+                TextColor="Black"/>
+
+            <Button
+                x:Name="Modifica"
+                Clicked="Modifica_Clicked"
+                Text="Modifica"
+                VerticalOptions="End"
+                TextColor="Black"/>
+
+            <Button
+                x:Name="Delete"
+                Clicked="Delete_Clicked"
+                Text="Sterge"
+                VerticalOptions="End"
+                TextColor="Black"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
