@@ -1,11 +1,13 @@
 ﻿using CalculatorCalorii.Classes;
 using CalculatorCalorii.Pages;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 
 namespace CalculatorCalorii
 {
     public partial class MainPage : ContentPage
     {
+
         private ObservableCollection<Alimente> originalItems; // Replace with your actual item type
         private ObservableCollection<Alimente> filteredItems;
 
@@ -51,12 +53,10 @@ namespace CalculatorCalorii
 
         private void InitializeData()
         {
-
-            SQLiteCon.conexiune();
             List<Alimente> alimente = SQLiteCon.GetData();
             originalItems = new ObservableCollection<Alimente>(alimente.OrderBy(aliment => aliment.Name));
-            filteredItems = originalItems;
-            listAlimente.ItemsSource = filteredItems;
+                filteredItems = originalItems;
+                listAlimente.ItemsSource = filteredItems;
         }
 
     }

@@ -1,17 +1,19 @@
 using CalculatorCalorii.Classes;
+using System.Collections.ObjectModel;
 
 namespace CalculatorCalorii.Pages;
 
 public partial class Modificare : ContentPage
 {
+    private ObservableCollection<Alimente> originalItems; // Replace with your actual item type
+    private ObservableCollection<Alimente> filteredItems;
+
     int id, calorii;
     string name= string.Empty;
 	public Modificare()
 	{
 		InitializeComponent();
-        SQLiteCon.conexiune();
-        List<Alimente> alimente = SQLiteCon.GetData();
-        listAlimente.ItemsSource = alimente.OrderBy(aliment => aliment.Name);
+        InitializeData();
         MessagingCenter.Subscribe<object>(this, "DataAdded", (sender) => {
             List<Alimente> alimente = SQLiteCon.GetData();
             listAlimente.ItemsSource = alimente;
@@ -60,5 +62,10 @@ public partial class Modificare : ContentPage
         id = aliment.ID;
         calorii = aliment.Calorii;
         name = aliment.Name;
+    }
+
+    private void InitializeData()
+    {
+
     }
 }
