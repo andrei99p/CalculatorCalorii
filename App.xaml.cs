@@ -7,6 +7,7 @@ namespace CalculatorCalorii
         public App()
         {
             InitializeComponent();
+            UserAppTheme = AppTheme.Light;
             SQLiteCon.conexiune();
             MainPage = new AppShell();
         }
