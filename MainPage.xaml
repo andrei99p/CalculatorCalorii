@@ -34,68 +34,15 @@
             </ListView.ItemTemplate>
         </ListView>
 
-
-        <Grid 
-            toolkit:DockLayout.DockPosition="Bottom">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Button 
-                Grid.Row="0"
-                Grid.Column="1"
-                x:Name="btnClear" 
-                Clicked="btnClear_Clicked_1" 
-                Text="C" 
-                VerticalOptions="End"
-                FontAttributes="Bold"
-                FontSize="Small"
-                Margin="10"/>
-            <Button 
-                Grid.Row="0"
-                Grid.Column="0"
-                x:Name="btnSuma" 
-                Clicked="btnSuma_Clicked" 
-                Text="+" 
-                VerticalOptions="End"
-                FontAttributes="Bold"
-                FontSize="Small"
-                Margin="10"/>
-            <Button 
-                Grid.Row="1"
-                Grid.Column="0"
-                x:Name="btnModificare" 
-                Clicked="btnModificare_Clicked" 
-                Text="Modificare" 
-                VerticalOptions="End"
-                FontAttributes="Bold"
-                FontSize="Small"
-                Margin="10"/>
-            <Button 
-                Grid.Row="1"
-                Grid.Column="1"
-                x:Name="btnAdaugare" 
-                Clicked="btnAdaugare_Clicked" 
-                Text="Adaugare" 
-                VerticalOptions="End"
-                FontAttributes="Bold"
-                FontSize="Small"
-                Margin="10"/>
-        </Grid>
-
         <Entry 
-            x:Name="txtGrame"
-            Placeholder="Grame" 
-            Keyboard="Numeric"     
-            HorizontalOptions="FillAndExpand"
-            Margin="10"
-            toolkit:DockLayout.DockPosition="Top"
-            ClearButtonVisibility="WhileEditing"
-            />
+             x:Name="txtGrame"
+             Placeholder="Grame" 
+             Keyboard="Numeric"     
+             HorizontalOptions="FillAndExpand"
+             Margin="5"
+             toolkit:DockLayout.DockPosition="Top"
+             ClearButtonVisibility="WhileEditing"
+             />
 
         <Label 
             x:Name="txtSuma"
@@ -118,6 +65,75 @@
             TextColor="Gray"
             toolkit:DockLayout.DockPosition="Top"
             />
+
+        <Grid 
+            toolkit:DockLayout.DockPosition="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button 
+                    Grid.Column="1"
+                    x:Name="btnClear" 
+                    Clicked="btnClear_Clicked_1" 
+                    Text="C" 
+                    VerticalOptions="End"
+                    FontAttributes="Bold"
+                    FontSize="Small"
+                    Margin="5"/>
+                <Button 
+                    Grid.Column="2"
+                    x:Name="btnSuma" 
+                    Clicked="btnSuma_Clicked" 
+                    Text="+" 
+                    VerticalOptions="End"
+                    FontAttributes="Bold"
+                    FontSize="Small"
+                    Margin="5"/>
+                <Button 
+                    Grid.Column="0"
+                    x:Name="btnIstoric" 
+                    Clicked="btnIstoric_Clicked" 
+                    Text="H" 
+                    VerticalOptions="End"
+                    FontAttributes="Bold"
+                    FontSize="Small"
+                    Margin="5"/>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button 
+                    Grid.Column="0"
+                    x:Name="btnModificare" 
+                    Clicked="btnModificare_Clicked" 
+                    Text="Modificare" 
+                    VerticalOptions="End"
+                    FontAttributes="Bold"
+                    FontSize="Small"
+                    Margin="5"/>
+                <Button 
+                    Grid.Column="1"
+                    x:Name="btnAdaugare" 
+                    Clicked="btnAdaugare_Clicked" 
+                    Text="Adaugare" 
+                    VerticalOptions="End"
+                    FontAttributes="Bold"
+                    FontSize="Small"
+                    Margin="5"/>
+            </Grid>
+        </Grid>
     </toolkit:DockLayout>
 
 </ContentPage>

@@ -68,6 +68,9 @@
 	  <MauiXaml Update="Pages\Adaugare.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\Istoric.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\Modificare.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

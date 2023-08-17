@@ -1,11 +1,4 @@
 ﻿using SQLite;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CalculatorCalorii.Classes
 {
@@ -17,5 +10,45 @@ namespace CalculatorCalorii.Classes
         [SQLite.MaxLength(50), Unique]
         public string Name { get; set; }
         public int Calorii { get; set; }
+
+
+        public static List<Alimente> GetData()
+        {
+            List<Alimente> alimentes = SQLiteCon.conn.Table<Alimente>().ToList();
+            return alimentes;
+        }
+
+        public static int Insert(Alimente aliment)
+        {
+            int result = int.MinValue;
+            try
+            {
+                result = SQLiteCon.conn.Insert(aliment);
+            }
+            catch
+            {
+            }
+
+            return result;
+        }
+
+        public static int Update(Alimente aliment)
+        {
+            int result = int.MinValue;
+            try
+            {
+                result = SQLiteCon.conn.Update(aliment);
+            }
+            catch
+            { }
+            return result;
+        }
+
+        public static int Delete(int alimentID)
+        {
+            int result = 0;
+            result = SQLiteCon.conn.Delete<Alimente>(alimentID);
+            return result;
+        }
     }
 }

@@ -11,6 +11,7 @@ namespace CalculatorCalorii
             Routing.RegisterRoute(nameof(Adaugare), typeof(Adaugare));
             Routing.RegisterRoute(nameof(Modificare), typeof(Modificare));
             Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
+            Routing.RegisterRoute(nameof(Istoric), typeof(Istoric));
         }
     }
 }

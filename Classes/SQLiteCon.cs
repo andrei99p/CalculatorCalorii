@@ -21,63 +21,19 @@ namespace CalculatorCalorii.Classes
 
         public static string DatabasePath = Path.Combine(FileSystem.AppDataDirectory, DatabaseFilename);
 
-        //static string filename = "C:\\Users\\DRAGOS-ANDREIPOPESCU\\Desktop\\calorii\\alimente.db";
-        ////static string filename = "alimente.db";
-        static SQLiteConnection conn = new SQLiteConnection(DatabasePath);
-
-        public static int Insert(Alimente aliment)
-        {
-            int result = int.MinValue;
-                try
-                {
-                    result = conn.Insert(aliment);
-                }
-                catch
-                {
-                }
-
-            return result;
-        }
-
-
-        public static List<Alimente> GetData()
-        {
-            List<Alimente> alimentes = conn.Table<Alimente>().ToList();
-            return alimentes;
-        }
-
-
-        public static int Update(Alimente aliment)
-        {
-            int result = int.MinValue;
-            try
-            {
-                result = conn.Update(aliment);
-            }
-            catch
-            { }
-            return result;
-        }
-
-
-        public static int Delete(int alimentID)
-        {
-            int result = 0;
-            result = conn.Delete<Alimente>(alimentID);
-            return result;
-        }
+        public static SQLiteConnection conn = new SQLiteConnection(DatabasePath);
 
         public static void conexiune()
         {
             try
             {
                 conn.CreateTable<Alimente>();
+                conn.CreateTable<Calcule>();
             }
             catch (SQLiteException ex)
             {
                 Console.WriteLine(ex.Message);
             }
         }
-
     }
 }

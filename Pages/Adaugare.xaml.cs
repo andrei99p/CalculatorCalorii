@@ -31,11 +31,11 @@ public partial class Adaugare : ContentPage
 		aliment.Name = txtNume.Text;
 		aliment.Calorii = int.Parse(txtCalorii.Text);
 
-		if (SQLiteCon.Insert(aliment) == 1)
+		if (Alimente.Insert(aliment) == 1)
 		{
 			txtNume.Text = string.Empty;
 			txtCalorii.Text = string.Empty;
-			Adauga.TextColor = Color.FromArgb("#228B22");
+			Adauga.TextColor = Color.FromArgb("#69BE28");
             MessagingCenter.Send<object>(this, "DataAdded");
         }
 		else

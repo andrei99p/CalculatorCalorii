@@ -23,16 +23,6 @@ namespace CalculatorCalorii
                  
         }
 
-        private void btnAdaugare_Clicked(object sender, EventArgs e)
-        {
-            Shell.Current.GoToAsync(nameof(Adaugare));
-        }
-
-        private void btnModificare_Clicked(object sender, EventArgs e)
-        {
-            Shell.Current.GoToAsync(nameof(Modificare));
-        }
-
         private void searchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
             string searchText = e.NewTextValue;
@@ -48,20 +38,10 @@ namespace CalculatorCalorii
 
         private void InitializeData()
         {
-            List<Alimente> alimente = SQLiteCon.GetData();
+            List<Alimente> alimente = Alimente.GetData();
             originalItems = new ObservableCollection<Alimente>(alimente.OrderBy(aliment => aliment.Name));
             filteredItems = originalItems;
             listAlimente.ItemsSource = filteredItems;
-        }
-
-        private void btnSuma_Clicked(object sender, EventArgs e)
-        {
-            if (!String.IsNullOrEmpty(txtGrame.Text))
-            {
-                double suma = calorii * double.Parse(txtGrame.Text) +double.Parse(txtSuma.Text.Substring(0,txtSuma.Text.Length-5));
-                txtSuma2.Text = txtSuma.Text.Substring(0, txtSuma.Text.Length - 5) + " + " + (calorii * double.Parse(txtGrame.Text)).ToString();
-                txtSuma.Text=suma.ToString()+" kcal";
-            }   
         }
 
         private void listAlimente_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -70,9 +50,43 @@ namespace CalculatorCalorii
             calorii=(double)(aliment.Calorii)/100;
         }
 
+        #region buttons
+
+        private void btnSuma_Clicked(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtGrame.Text))
+            {
+                double suma = calorii * double.Parse(txtGrame.Text) + double.Parse(txtSuma.Text.Substring(0, txtSuma.Text.Length - 5));
+                txtSuma2.Text = txtSuma.Text.Substring(0, txtSuma.Text.Length - 5) + " + " + (calorii * double.Parse(txtGrame.Text)).ToString();
+                txtSuma.Text = suma.ToString() + " kcal";
+
+                Calcule calcul = new();
+                calcul.Calcul = txtSuma2.Text + " = " + txtSuma.Text;
+                if(Calcule.Insert(calcul)==1);
+                    MessagingCenter.Send<object>(this, "IstoricAdded");
+            }
+        }
+
         private void btnClear_Clicked_1(object sender, EventArgs e)
         {
             txtSuma.Text = "0 kcal";
+            txtSuma2.Text = string.Empty;
         }
+        #endregion
+
+        #region pages
+        private void btnIstoric_Clicked(object sender, EventArgs e)
+        {
+            Shell.Current.GoToAsync(nameof(Istoric));
+        }
+        private void btnAdaugare_Clicked(object sender, EventArgs e)
+        {
+            Shell.Current.GoToAsync(nameof(Adaugare));
+        }
+        private void btnModificare_Clicked(object sender, EventArgs e)
+        {
+            Shell.Current.GoToAsync(nameof(Modificare));
+        }
+        #endregion
     }
 }

@@ -15,7 +15,7 @@ public partial class Modificare : ContentPage
 		InitializeComponent();
         InitializeData();
         MessagingCenter.Subscribe<object>(this, "DataAdded", (sender) => {
-            List<Alimente> alimente = SQLiteCon.GetData();
+            List<Alimente> alimente = Alimente.GetData();
             listAlimente.ItemsSource = alimente;
         });
     }
@@ -32,12 +32,12 @@ public partial class Modificare : ContentPage
         aliment.Calorii = int.Parse(txtCalorii.Text);
         aliment.ID = id;
 
-        if (SQLiteCon.Update(aliment) == 1)
+        if (Alimente.Update(aliment) == 1)
         {
             txtNume.Text = string.Empty;
             txtCalorii.Text = string.Empty;
-            Modifica.TextColor = Color.FromArgb("#228B22");
-            SQLiteCon.GetData();
+            Modifica.TextColor = Color.FromArgb("#69BE28");
+            Alimente.GetData();
             MessagingCenter.Send<object>(this, "DataAdded");
         }
         else
@@ -48,12 +48,12 @@ public partial class Modificare : ContentPage
 
     private void Delete_Clicked(object sender, EventArgs e)
     {
-        if(SQLiteCon.Delete(id)==1)
+        if(Alimente.Delete(id)==1)
         {
             txtNume.Text = string.Empty;
             txtCalorii.Text = string.Empty;
-            Delete.TextColor = Color.FromArgb("#228B22");
-            SQLiteCon.GetData();
+            Delete.TextColor = Color.FromArgb("#69BE28");
+            Alimente.GetData();
             MessagingCenter.Send<object>(this, "DataAdded");
         }
         else
@@ -85,7 +85,7 @@ public partial class Modificare : ContentPage
 
     private void InitializeData()
     {
-        List<Alimente> alimente = SQLiteCon.GetData();
+        List<Alimente> alimente = Alimente.GetData();
         originalItems = new ObservableCollection<Alimente>(alimente.OrderBy(aliment => aliment.Name));
         listAlimente.ItemsSource = originalItems;
     }
