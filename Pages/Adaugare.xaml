@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CalculatorCalorii.Pages.Adaugare"
              Title="Adaugare">
-    <VerticalStackLayout VerticalOptions="Center">
+    <StackLayout 
+        VerticalOptions="Start"
+        Padding="10">
 
         <Editor 
             x:Name="txtNume"
@@ -11,22 +13,27 @@
             VerticalOptions="Center" 
             Placeholder="Nume" 
             PlaceholderColor="Black" 
-            TextColor="Black"/>
+            TextColor="Black"
+            Margin="5,10"/>
 
         <Editor 
             x:Name="txtCalorii"
             BackgroundColor="LightGray" 
             VerticalOptions="Center" 
-            Placeholder="Calorii" PlaceholderColor="Black" 
-            TextColor="Black"/>
+            Placeholder="Calorii" 
+            PlaceholderColor="Black" 
+            TextColor="Black"
+            Margin="5,10"/>
 
         <Button
             x:Name="Adauga"
             Clicked="Adauga_Clicked"
             Text="Adauga"
             VerticalOptions="End"
-            TextColor="Black"/>
+            FontAttributes="Bold"
+            FontSize="Small"
+            Margin="10"/>
 
-    </VerticalStackLayout>
+    </StackLayout>
 
 </ContentPage>

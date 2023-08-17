@@ -36,7 +36,7 @@ public partial class Modificare : ContentPage
         }
         else
         {
-            Modifica.TextColor = Microsoft.Maui.Graphics.Color.FromArgb("#FF0000");
+            Modifica.TextColor = Color.FromArgb("#FF0000");
         }
     }
 
@@ -66,6 +66,8 @@ public partial class Modificare : ContentPage
 
     private void InitializeData()
     {
-
+        List<Alimente> alimente = SQLiteCon.GetData();
+        originalItems = new ObservableCollection<Alimente>(alimente.OrderBy(aliment => aliment.Name));
+        listAlimente.ItemsSource = originalItems;
     }
 }

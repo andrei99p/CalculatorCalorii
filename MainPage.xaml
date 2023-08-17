@@ -1,16 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="CalculatorCalorii.MainPage">
 
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="10"
-            Padding="30,0"
-            VerticalOptions="Start">
+    <toolkit:DockLayout>
 
-            <SearchBar x:Name="searchBar" Placeholder="Search for items" TextChanged="searchBar_TextChanged" VerticalOptions="Start"></SearchBar>
-            <ListView x:Name="listAlimente" BackgroundColor="LightGray" VerticalOptions="Start">
+        <SearchBar 
+                x:Name="searchBar" 
+                Placeholder="Search for items" 
+                TextChanged="searchBar_TextChanged" 
+                VerticalOptions="Start"
+                toolkit:DockLayout.DockPosition="Top"
+                />
+            <ListView 
+                x:Name="listAlimente" 
+                BackgroundColor="LightGray" 
+                VerticalOptions="Start" 
+                HeightRequest="150"
+                toolkit:DockLayout.DockPosition="Top"
+                >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -23,10 +32,32 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <Button x:Name="btnAdaugare" Clicked="btnAdaugare_Clicked" Text="Adaugare" VerticalOptions="End"/>
-            <Button x:Name="btnModificare" Clicked="btnModificare_Clicked" Text="Modificare" VerticalOptions="End"/>
 
-        </VerticalStackLayout>
-    </ScrollView>
+            <ContentView HorizontalOptions="Start">
+                <Entry Placeholder="Calorii" Keyboard="Numeric" WidthRequest="250"/>
+            </ContentView>
+            <ContentView HorizontalOptions="End">
+                <Label Text=""></Label>
+            </ContentView>
+
+            <Button 
+                x:Name="btnAdaugare" 
+                Clicked="btnAdaugare_Clicked" 
+                Text="Adaugare" 
+                VerticalOptions="End"
+                FontAttributes="Bold"
+                FontSize="Small"
+                toolkit:DockLayout.DockPosition="Bottom"
+                />
+        <Button 
+                x:Name="btnModificare" 
+                Clicked="btnModificare_Clicked" 
+                Text="Modificare" 
+                VerticalOptions="End"
+                FontAttributes="Bold"
+                FontSize="Small"
+                toolkit:DockLayout.DockPosition="Bottom"/>
+
+    </toolkit:DockLayout>
 
 </ContentPage>

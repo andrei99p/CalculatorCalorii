@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui;
+using Microsoft.Extensions.Logging;
 
 namespace CalculatorCalorii
 {
@@ -9,10 +10,17 @@ namespace CalculatorCalorii
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit(options =>
+                {
+                    options.SetShouldSuppressExceptionsInConverters(false);
+                    options.SetShouldSuppressExceptionsInBehaviors(false);
+                    options.SetShouldSuppressExceptionsInAnimations(false);
+                })
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+
                 });
 
 #if DEBUG

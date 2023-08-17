@@ -55,8 +55,8 @@ namespace CalculatorCalorii
         {
             List<Alimente> alimente = SQLiteCon.GetData();
             originalItems = new ObservableCollection<Alimente>(alimente.OrderBy(aliment => aliment.Name));
-                filteredItems = originalItems;
-                listAlimente.ItemsSource = filteredItems;
+            filteredItems = originalItems;
+            listAlimente.ItemsSource = filteredItems;
         }
 
     }

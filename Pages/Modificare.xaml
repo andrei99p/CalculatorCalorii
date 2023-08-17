@@ -5,11 +5,12 @@
              Title="Modificare">
     <ScrollView>
         <VerticalStackLayout
-         Spacing="10"
-         Padding="30,0"
-         VerticalOptions="Start">
+            Spacing="10"
+            Padding="30,0"
+            Margin="10"
+            VerticalOptions="Start">
 
-            <ListView x:Name="listAlimente" BackgroundColor="LightGray" VerticalOptions="Start" HeightRequest="250" ItemSelected="listAlimente_ItemSelected">
+            <ListView x:Name="listAlimente" BackgroundColor="LightGray" VerticalOptions="Center" HeightRequest="250" ItemSelected="listAlimente_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -29,28 +30,32 @@
                 VerticalOptions="Start" 
                 Placeholder="Nume" 
                 PlaceholderColor="Black" 
-                TextColor="Black"/>
+                TextColor="Black"
+                Margin="5,10"/>
 
             <Editor 
                 x:Name="txtCalorii"
                 BackgroundColor="LightGray" 
                 HeightRequest="5" VerticalOptions="Start" 
                 Placeholder="Calorii" PlaceholderColor="Black" 
-                TextColor="Black"/>
+                TextColor="Black"
+                Margin="5,10"/>
 
             <Button
                 x:Name="Modifica"
                 Clicked="Modifica_Clicked"
                 Text="Modifica"
                 VerticalOptions="End"
-                TextColor="Black"/>
+                FontAttributes="Bold"
+                FontSize="Small"/>
 
             <Button
                 x:Name="Delete"
                 Clicked="Delete_Clicked"
                 Text="Sterge"
                 VerticalOptions="End"
-                TextColor="Black"/>
+                FontAttributes="Bold"
+                FontSize="Small"/>
 
         </VerticalStackLayout>
     </ScrollView>
