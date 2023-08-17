@@ -59,6 +59,7 @@ namespace CalculatorCalorii
             if (!String.IsNullOrEmpty(txtGrame.Text))
             {
                 double suma = calorii * double.Parse(txtGrame.Text) +double.Parse(txtSuma.Text.Substring(0,txtSuma.Text.Length-5));
+                txtSuma2.Text = txtSuma.Text.Substring(0, txtSuma.Text.Length - 5) + " + " + (calorii * double.Parse(txtGrame.Text)).ToString();
                 txtSuma.Text=suma.ToString()+" kcal";
             }   
         }
@@ -67,6 +68,11 @@ namespace CalculatorCalorii
         {
             Alimente aliment = (Alimente)e.SelectedItem;
             calorii=(double)(aliment.Calorii)/100;
+        }
+
+        private void btnClear_Clicked_1(object sender, EventArgs e)
+        {
+            txtSuma.Text = "0 kcal";
         }
     }
 }

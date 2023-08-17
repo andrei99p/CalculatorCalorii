@@ -22,10 +22,16 @@ public partial class Modificare : ContentPage
 
     private void Modifica_Clicked(object sender, EventArgs e)
     {
+        if (String.IsNullOrEmpty(txtCalorii.Text) || String.IsNullOrEmpty(txtNume.Text))
+        {
+            Modifica.TextColor = Color.FromArgb("#FF0000");
+            return;
+        }
         Alimente aliment = new();
         aliment.Name = txtNume.Text;
         aliment.Calorii = int.Parse(txtCalorii.Text);
         aliment.ID = id;
+
         if (SQLiteCon.Update(aliment) == 1)
         {
             txtNume.Text = string.Empty;
@@ -62,6 +68,19 @@ public partial class Modificare : ContentPage
         id = aliment.ID;
         calorii = aliment.Calorii;
         name = aliment.Name;
+    }
+
+    private void searchBar_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        string searchText = e.NewTextValue;
+        if (string.IsNullOrWhiteSpace(searchText))
+        {
+            listAlimente.ItemsSource = originalItems;
+        }
+        else
+        {
+            listAlimente.ItemsSource = originalItems.Where(item => item.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase));
+        }
     }
 
     private void InitializeData()

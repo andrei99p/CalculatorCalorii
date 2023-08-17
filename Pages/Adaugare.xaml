@@ -9,7 +9,7 @@
         
         <Editor 
             x:Name="txtNume"
-            BackgroundColor="LightGray" 
+            BackgroundColor="Lavender" 
             VerticalOptions="Center" 
             Placeholder="Nume" 
             PlaceholderColor="Black" 
@@ -18,7 +18,7 @@
 
         <Editor 
             x:Name="txtCalorii"
-            BackgroundColor="LightGray" 
+            BackgroundColor="Lavender" 
             VerticalOptions="Center" 
             Placeholder="Calorii" 
             PlaceholderColor="Black" 

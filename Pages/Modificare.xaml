@@ -5,11 +5,20 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              Title="Modificare">
     <toolkit:DockLayout>
+
+        <SearchBar 
+        x:Name="searchBar" 
+        Placeholder="Search for items" 
+        TextChanged="searchBar_TextChanged" 
+        VerticalOptions="Start"
+        toolkit:DockLayout.DockPosition="Top"
+        />
+
         <ListView 
             x:Name="listAlimente" 
-            BackgroundColor="LightGray" 
+            BackgroundColor="Lavender" 
             VerticalOptions="Center" 
-            HeightRequest="250" 
+            HeightRequest="150" 
             ItemSelected="listAlimente_ItemSelected"
             toolkit:DockLayout.DockPosition="Top">
                 <ListView.ItemTemplate>
@@ -24,42 +33,44 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <Editor 
-                x:Name="txtNume"
-                BackgroundColor="LightGray" 
-                VerticalOptions="Start" 
-                Placeholder="Nume" 
-                PlaceholderColor="Black" 
-                TextColor="Black"
-                Margin="5,10"
-                toolkit:DockLayout.DockPosition="Top"/>
+        <Editor 
+            x:Name="txtNume"
+            BackgroundColor="Lavender" 
+            VerticalOptions="Start" 
+            Placeholder="Nume" 
+            PlaceholderColor="Black" 
+            TextColor="Black"
+            Margin="5,10"
+            toolkit:DockLayout.DockPosition="Top"/>
 
-            <Editor 
-                x:Name="txtCalorii"
-                BackgroundColor="LightGray" 
-                VerticalOptions="Start" 
-                Placeholder="Calorii" PlaceholderColor="Black" 
-                TextColor="Black"
-                Margin="5,10"
-                toolkit:DockLayout.DockPosition="Top"
-                Keyboard="Numeric"  />
-
-            <Button
-                x:Name="Modifica"
-                Clicked="Modifica_Clicked"
-                Text="Modifica"
-                VerticalOptions="End"
-                FontAttributes="Bold"
-                FontSize="Small"
-                toolkit:DockLayout.DockPosition="Bottom"/>
+        <Editor 
+            x:Name="txtCalorii"
+            BackgroundColor="Lavender" 
+            VerticalOptions="Start" 
+            Placeholder="Calorii" PlaceholderColor="Black" 
+            TextColor="Black"
+            Margin="5,10"
+            toolkit:DockLayout.DockPosition="Top"
+            Keyboard="Numeric"/>
 
         <Button
-                x:Name="Delete"
-                Clicked="Delete_Clicked"
-                Text="Sterge"
-                VerticalOptions="End"
-                FontAttributes="Bold"
-                FontSize="Small"
-                toolkit:DockLayout.DockPosition="Bottom"/>
+            x:Name="Modifica"
+            Clicked="Modifica_Clicked"
+            Text="Modifica"
+            VerticalOptions="Start"
+            FontAttributes="Bold"
+            FontSize="Small"
+            Margin="5, 10"
+            toolkit:DockLayout.DockPosition="Top"/>
+
+        <Button
+            x:Name="Delete"
+            Clicked="Delete_Clicked"
+            Text="Sterge"
+            VerticalOptions="Start"
+            FontAttributes="Bold"
+            FontSize="Small"
+            Margin="5,10"
+            toolkit:DockLayout.DockPosition="Top"/>
     </toolkit:DockLayout>
 </ContentPage>
