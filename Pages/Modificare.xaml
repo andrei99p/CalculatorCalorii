@@ -2,15 +2,16 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CalculatorCalorii.Pages.Modificare"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              Title="Modificare">
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="10"
-            Padding="30,0"
-            Margin="10"
-            VerticalOptions="Start">
-
-            <ListView x:Name="listAlimente" BackgroundColor="LightGray" VerticalOptions="Center" HeightRequest="250" ItemSelected="listAlimente_ItemSelected">
+    <toolkit:DockLayout>
+        <ListView 
+            x:Name="listAlimente" 
+            BackgroundColor="LightGray" 
+            VerticalOptions="Center" 
+            HeightRequest="250" 
+            ItemSelected="listAlimente_ItemSelected"
+            toolkit:DockLayout.DockPosition="Top">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -26,20 +27,22 @@
             <Editor 
                 x:Name="txtNume"
                 BackgroundColor="LightGray" 
-                HeightRequest="5" 
                 VerticalOptions="Start" 
                 Placeholder="Nume" 
                 PlaceholderColor="Black" 
                 TextColor="Black"
-                Margin="5,10"/>
+                Margin="5,10"
+                toolkit:DockLayout.DockPosition="Top"/>
 
             <Editor 
                 x:Name="txtCalorii"
                 BackgroundColor="LightGray" 
-                HeightRequest="5" VerticalOptions="Start" 
+                VerticalOptions="Start" 
                 Placeholder="Calorii" PlaceholderColor="Black" 
                 TextColor="Black"
-                Margin="5,10"/>
+                Margin="5,10"
+                toolkit:DockLayout.DockPosition="Top"
+                Keyboard="Numeric"  />
 
             <Button
                 x:Name="Modifica"
@@ -47,16 +50,16 @@
                 Text="Modifica"
                 VerticalOptions="End"
                 FontAttributes="Bold"
-                FontSize="Small"/>
+                FontSize="Small"
+                toolkit:DockLayout.DockPosition="Bottom"/>
 
-            <Button
+        <Button
                 x:Name="Delete"
                 Clicked="Delete_Clicked"
                 Text="Sterge"
                 VerticalOptions="End"
                 FontAttributes="Bold"
-                FontSize="Small"/>
-
-        </VerticalStackLayout>
-    </ScrollView>
+                FontSize="Small"
+                toolkit:DockLayout.DockPosition="Bottom"/>
+    </toolkit:DockLayout>
 </ContentPage>

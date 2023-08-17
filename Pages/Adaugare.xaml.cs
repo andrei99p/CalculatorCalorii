@@ -13,7 +13,7 @@ public partial class Adaugare : ContentPage
     {	
 		if (String.IsNullOrEmpty(txtNume.Text) || String.IsNullOrEmpty(txtCalorii.Text))
 		{
-            Adauga.TextColor = Microsoft.Maui.Graphics.Color.FromArgb("#FF0000");
+            Adauga.TextColor = Color.FromArgb("#FF0000");
             return;
         }
 
@@ -35,13 +35,12 @@ public partial class Adaugare : ContentPage
 		{
 			txtNume.Text = string.Empty;
 			txtCalorii.Text = string.Empty;
-			Adauga.TextColor = Microsoft.Maui.Graphics.Color.FromArgb("#228B22");
-			SQLiteCon.GetData();
+			Adauga.TextColor = Color.FromArgb("#228B22");
             MessagingCenter.Send<object>(this, "DataAdded");
         }
 		else
 		{
-            Adauga.TextColor = Microsoft.Maui.Graphics.Color.FromArgb("#FF0000");
+            Adauga.TextColor = Color.FromArgb("#FF0000");
         }
     }
 }

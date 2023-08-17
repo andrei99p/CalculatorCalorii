@@ -13,50 +13,79 @@
                 VerticalOptions="Start"
                 toolkit:DockLayout.DockPosition="Top"
                 />
-            <ListView 
-                x:Name="listAlimente" 
-                BackgroundColor="LightGray" 
-                VerticalOptions="Start" 
-                HeightRequest="150"
-                toolkit:DockLayout.DockPosition="Top"
-                >
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal" Padding="10">
-                                <Label Text="{Binding Name}" TextColor="Black" FontSize="16" />
-                                <Label Text="{Binding Calorii, StringFormat=' - kcal: {0}'}" TextColor="Black" FontSize="14" />
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+        <ListView 
+            x:Name="listAlimente" 
+            BackgroundColor="Lavender" 
+            VerticalOptions="Start" 
+            HeightRequest="150"
+            toolkit:DockLayout.DockPosition="Top"
+            SeparatorColor="Black"
+            ItemSelected="listAlimente_ItemSelected"
+            >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="10">
+                            <Label Text="{Binding Name, StringFormat=' + {0}'}" TextColor="Black" FontSize="16" />
+                            <Label Text="{Binding Calorii, StringFormat=' - kcal: {0}'}" TextColor="Black" FontSize="14" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
-
-            <ContentView HorizontalOptions="Start">
-                <Entry Placeholder="Calorii" Keyboard="Numeric" WidthRequest="250"/>
-            </ContentView>
-            <ContentView HorizontalOptions="End">
-                <Label Text=""></Label>
-            </ContentView>
-
-            <Button 
-                x:Name="btnAdaugare" 
-                Clicked="btnAdaugare_Clicked" 
-                Text="Adaugare" 
-                VerticalOptions="End"
-                FontAttributes="Bold"
-                FontSize="Small"
-                toolkit:DockLayout.DockPosition="Bottom"
-                />
         <Button 
-                x:Name="btnModificare" 
-                Clicked="btnModificare_Clicked" 
-                Text="Modificare" 
-                VerticalOptions="End"
-                FontAttributes="Bold"
-                FontSize="Small"
-                toolkit:DockLayout.DockPosition="Bottom"/>
+             x:Name="btnAdaugare" 
+             Clicked="btnAdaugare_Clicked" 
+             Text="Adaugare" 
+             VerticalOptions="End"
+             FontAttributes="Bold"
+             FontSize="Small"
+             toolkit:DockLayout.DockPosition="Bottom"
+             />
+        <Button 
+             x:Name="btnModificare" 
+             Clicked="btnModificare_Clicked" 
+             Text="Modificare" 
+             VerticalOptions="End"
+             FontAttributes="Bold"
+             FontSize="Small"
+             toolkit:DockLayout.DockPosition="Bottom"/>
+        <Button 
+             x:Name="btnSuma" 
+             Clicked="btnSuma_Clicked" 
+             Text="+" 
+             VerticalOptions="End"
+             FontAttributes="Bold"
+             FontSize="Small"
+             toolkit:DockLayout.DockPosition="Bottom"
+             />
+
+        <Entry 
+            x:Name="txtGrame"
+            Placeholder="Grame" 
+            Keyboard="Numeric"     
+            HorizontalOptions="FillAndExpand"
+            Margin="10"
+            toolkit:DockLayout.DockPosition="Top"
+            ClearButtonVisibility="WhileEditing"
+            />
+        <Label 
+            x:Name="txtSuma"
+            Text="0 kcal"
+            HorizontalOptions="FillAndExpand"
+            toolkit:DockLayout.DockPosition="Bottom"
+            MaximumHeightRequest="200"
+            HorizontalTextAlignment="End"
+            VerticalTextAlignment="End"
+            FontAttributes="Bold"
+            FontSize="Medium"
+            Padding="20"
+            BackgroundColor="Transparent"
+            />
+
+
+       
 
     </toolkit:DockLayout>
 

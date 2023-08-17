@@ -6,7 +6,7 @@
     <StackLayout 
         VerticalOptions="Start"
         Padding="10">
-
+        
         <Editor 
             x:Name="txtNume"
             BackgroundColor="LightGray" 
@@ -23,7 +23,8 @@
             Placeholder="Calorii" 
             PlaceholderColor="Black" 
             TextColor="Black"
-            Margin="5,10"/>
+            Margin="5,10"
+            Keyboard="Numeric"  />
 
         <Button
             x:Name="Adauga"
