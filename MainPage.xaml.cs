@@ -9,7 +9,8 @@ namespace CalculatorCalorii
     public partial class MainPage : ContentPage
     {
         double calorii = 0;
-        
+        Alimente aliment = new();
+
         private ObservableCollection<Alimente> originalItems; 
         private ObservableCollection<Alimente> filteredItems;
 
@@ -46,7 +47,7 @@ namespace CalculatorCalorii
 
         private void listAlimente_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            Alimente aliment = (Alimente)e.SelectedItem;
+            aliment = (Alimente)e.SelectedItem;
             calorii=(double)(aliment.Calorii)/100;
         }
 
@@ -57,11 +58,11 @@ namespace CalculatorCalorii
             if (!String.IsNullOrEmpty(txtGrame.Text))
             {
                 double suma = calorii * double.Parse(txtGrame.Text) + double.Parse(txtSuma.Text.Substring(0, txtSuma.Text.Length - 5));
-                txtSuma2.Text = txtSuma.Text.Substring(0, txtSuma.Text.Length - 5) + " + " + (calorii * double.Parse(txtGrame.Text)).ToString();
+                txtSuma2.Text = " + " + (calorii * double.Parse(txtGrame.Text)).ToString();
                 txtSuma.Text = suma.ToString() + " kcal";
 
                 Calcule calcul = new();
-                calcul.Calcul = txtSuma2.Text + " = " + txtSuma.Text;
+                calcul.Calcul = aliment.Name + " : " + (calorii * double.Parse(txtGrame.Text)).ToString("#.##") + " kcal";
                 if(Calcule.Insert(calcul)==1);
                     MessagingCenter.Send<object>(this, "IstoricAdded");
             }
@@ -71,6 +72,8 @@ namespace CalculatorCalorii
         {
             txtSuma.Text = "0 kcal";
             txtSuma2.Text = string.Empty;
+            txtGrame.Text = string.Empty;
+            InitializeData();
         }
         #endregion
 

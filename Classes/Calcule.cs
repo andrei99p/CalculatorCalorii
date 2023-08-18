@@ -17,8 +17,13 @@ namespace CalculatorCalorii.Classes
 
         public static List<Calcule> GetData()
         {
-            List<Calcule> Calcules = SQLiteCon.conn.Table<Calcule>().ToList();
-            //TODO: Sort descending
+            List<Calcule> Calcules = SQLiteCon.conn.Table<Calcule>().OrderByDescending(c=>c.ID).ToList();
+            while (Calcules.Count > 50)
+            {
+                Calcule calculat = Calcules[Calcules.Count-1];
+                Calcule.Delete(calculat.ID);
+                Calcules = Calcule.GetData();
+            }
             return Calcules;
         }
 
